@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback hell</title>
+    <style>
+        .go {
+            width: 100px;
+            height: 100px;
+            background: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.5s;
+        }
+        .go.circle {
+            border-radius: 50%;
+        }
+        .go.black {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="go">Go</div>
+
+    <script>
+        const goDiv = document.querySelector('.go');
+        console.log(goDiv);
+        setTimeout(function () {
+            goDiv.classList.add('circle');
+            setTimeout(() => {
+                goDiv.classList.add('black');
+                setTimeout(() => {
+                    goDiv.classList.remove('circle');
+                    setTimeout(() => {
+                        goDiv.classList.remove('black');
+                    }, 50);
+                }, 250);
+            }, 500);
+        }, 2000);
+        // setTimeout(() => {
+        //     goDiv.classList.add('circle');
+        // }, 2000);
+        // setTimeout(() => {
+        //     goDiv.classList.add('black');
+        // }, 500);
+    </script>
+</body>
+</html>

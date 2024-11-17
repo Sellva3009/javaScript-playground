@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <h1>API Playground</h1>
+    <!-- <img class="avatar" src="" alt="Avatar"> -->
+    <p class="user"></p>
+    <script>
+        // const avatarImg = document.querySelector('.avatar');
+        // const endpoint = 'https://api.github.com/users/sellva3009';
+        const baseEndpoint = 'https://api.github.com';
+        const usersEndpoint = `${baseEndpoint}/users`;
+        const user = document.querySelector('.user');
+        // const dataPromise = fetch(endpoint);
+        // console.log(dataPromise);
+        async function displayName(username) {
+            user.textContent = 'Loading...';
+            const response = await fetch(`${usersEndpoint}/${username}`);
+            const data = await response.json();
+            console.log(data);
+            console.log(data.login);
+            console.log(data.bio);
+            console.log(data.avatar_url);
+            console.log(data.location);
+            user.textContent = `${data.name} - ${data.bio}`;
+        }
+
+        function handleError(err) {
+            console.log(err);
+            user.textContent = `Something went wrong ${err}`;
+        }
+
+        displayName('sellva3009').catch(handleError);
+
+        // dataPromise.then(data => {
+        //     return data.json();
+        //     // console.log(data);
+        // }).then(data => {
+        //     console.log(data);
+        //     console.log(data.login);
+        //     console.log(data.bio);
+        //     console.log(data.avatar_url);
+        //     console.log(data.location);
+        //     // const avatar = data.avatar_url;
+        //     // avatarImg.setAttribute('src', avatar);
+        //     user.textContent = `${data.name} - ${data.bio}`;
+        // }).catch(handleError);
+        
+    </script>
+</body>
+</html>

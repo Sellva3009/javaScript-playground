@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function Playground</title>
+</head>
+<body>
+    <ul>
+        <li data-time="3.34">First Video</li>
+        <li data-time="4.15">Second Video</li>
+        <li data-time="5.45">Flexbox Video</li>
+        <li data-time="6.12">Fourth Video</li>
+        <li data-time="47.41">Fifth Video</li>
+        <li data-time="8.33">Sixth Video</li>
+        <li data-time="29.56">Flexbox Video</li>
+        <li data-time="59.12">Eighth Video</li>
+        <li data-time="33.44">Nineth Video</li>
+        <li data-time="23.34">Flexbox Video 🐅</li>
+        <li data-time="31.14">Eleventh Video</li>
+    </ul>
+
+    <script>
+        // Select all the items and convert to array
+        const allLinks = document.querySelectorAll('[data-time]');
+        const allLinksArray = [...allLinks];
+        // allLinksArray.map((link) => {
+        //     console.log(link);
+        // })
+        console.log(allLinksArray);
+
+        // filter for the elements that only the elements contains flexbox
+        const filtered = allLinksArray.filter((item) => item.textContent.includes('Flexbox'))
+        // console.log(filtered);
+        // map down the list of time strings
+            .map(item => item.dataset.time)
+        // map to an array of seconds
+            .map(timecode => {
+                const parts = timecode.split(':').join(',');
+                return [...parts]; 
+            })
+        // reduce to get total
+            console.log(filtered);
+        // This all done through reduce but we are doing with arrow function so chain them
+
+        // console.log(typeof allLinksArray);
+    </script>
+</body>
+</html>
